@@ -6,7 +6,7 @@ const morgan = require("morgan")
 app.use(morgan("dev"))
 
 app.get('/', (req, res) => {
-    res.send('Lebron the GOAT')
+    res.send('This is express')
 })
 
 app.use(express.json())
