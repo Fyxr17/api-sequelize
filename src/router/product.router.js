@@ -2,6 +2,7 @@ const router = require("express").Router()
 const { faker } = require ("@faker-js/faker")
 const Products = require("../model/product.model.js")
 
+//get de todos los productos
 router.get("/products", async (req, res) => {
     const products = await Products.findAll()
     res.status(200).json({
@@ -11,6 +12,7 @@ router.get("/products", async (req, res) => {
     })
 })
 
+//get de fitrado por id
 router.get("/products/:product_id",async (req, res) => {
     const id = req.params.product_id
     const product = await Products.findOne({
@@ -25,6 +27,7 @@ router.get("/products/:product_id",async (req, res) => {
     })
 })
 
+//post para crear el producto
 router.post("/products", async (req, res) => {
     const dataProducts = req.body
     await Products.sync()
@@ -40,6 +43,7 @@ router.post("/products", async (req, res) => {
     })
 })
 
+//put para actualizar los productos
 router.put("/products/:product_id", async (req, res) => {
     const id = req.params.product_id
     const dataProducts = req.body
@@ -59,6 +63,7 @@ router.put("/products/:product_id", async (req, res) => {
     })
 })
 
+//delete para borrarlos por medio de su id
 router.delete("/products/:product_id", async (req, res) => {
     const id = req.params.product_id
     const deleteProduct = await Products.destroy({
